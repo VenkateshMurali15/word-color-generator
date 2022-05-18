@@ -8,6 +8,7 @@ function Home() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
+  const [error, seterror] = useState();
 
   const onFinish = (values) => {
     setLoading(true);
@@ -20,7 +21,7 @@ function Home() {
         form.resetFields();
       })
       .catch((err) => {
-        console.log(err);
+        seterror(err);
       });
   };
 
@@ -89,6 +90,7 @@ function Home() {
           {data && data.length === 0 && (
             <Title level={5}>Invalid Input. Please try other word</Title>
           )}
+          {error && <Title level={5}>error</Title>}
         </Row>
       )}
     </div>
